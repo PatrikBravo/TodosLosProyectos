@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    @model Entidades.Alumno
+    string estado = ViewBag.estados;
+    string estatus = ViewBag.estatus;
+
+}
+
+<h2>Delete</h2>
+<form action="" method="post">
+    @Html.AntiForgeryToken()
+    <dl>
+        <dt>ID</dt>
+        <dd>@Html.DisplayFor(m => m.id)</dd>
+
+        <dt>Nombre</dt>
+        <dd>@Html.DisplayFor(m => m.nombre)</dd>
+
+        <dt>Primer Apellido</dt>
+        <dd>@Html.DisplayFor(m => m.primerApellido)</dd>
+
+        <dt>Segundo Apellido</dt>
+        <dd>@Html.DisplayFor(m => m.segundoApellido)</dd>
+
+        <dt>Correo</dt>
+        <dd>@Html.DisplayFor(m => m.correo)</dd>
+
+        <dt>Telefono</dt>
+        <dd>@Html.DisplayFor(m => m.telefono)</dd>
+
+        <dt>Fecha de Nacimiento</dt>
+        <dd>@Html.DisplayFor(m => m.fechaNacimiento, "yyyy-MM-dd")</dd>
+
+        <dt>Curp</dt>
+        <dd>@Html.DisplayFor(m => m.curp)</dd>
+
+        <dt>Sueldo</dt>
+        <dd>@Html.DisplayFor(m => m.sueldo)</dd>
+
+        <dt>Estado</dt>
+        <dd>@Html.Name(estado)</dd>
+
+        <dt>Estatus</dt>
+        <dd>@Html.Name(estatus)</dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" name="name" value="Eliminar" onclick="return confirm('¿Estás seguro?')" />
+            </div>
+        </div>
+    }
+</form>
+    
+
+    <div>
+        @Html.ActionLink("Regresar", "Index", "Alumno")
+    </div>

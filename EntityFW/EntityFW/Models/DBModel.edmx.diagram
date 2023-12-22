@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cf3a4927ddf94787827487719f6dd299" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="InstitutoTichModel.Alumnos" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitutoTichModel.AlumnosBaja" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitutoTichModel.CatCurso" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitutoTichModel.Cursos" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitutoTichModel.CursosAlumnos" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitutoTichModel.CursosInstructores" Width="1.5" PointX="8.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitutoTichModel.Estados" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitutoTichModel.EstatusAlumno" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitutoTichModel.Instructores" Width="1.5" PointX="6" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitutoTichModel.Saldos" Width="1.5" PointX="8.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitutoTichModel.sysdiagrams" Width="1.5" PointX="10.375" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitutoTichModel.TablaISR" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitutoTichModel.Transacciones" Width="1.5" PointX="11" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitutoTichModel.Ejercicios" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitutoTichModel.Ejercicios1" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
+        <AssociationConnector Association="InstitutoTichModel.FK__Alumnos__idEstad__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="InstitutoTichModel.FK__Alumnos__idEstat__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="InstitutoTichModel.FK__CursosAlu__idAlu__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="InstitutoTichModel.FK__Cursos__idCatCur__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="InstitutoTichModel.FK_CatCurso_CatCurso" ManuallyRouted="false" />
+        <AssociationConnector Association="InstitutoTichModel.FK__CursosAlu__idCur__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="InstitutoTichModel.FK__CursosIns__idCur__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="InstitutoTichModel.FK__CursosIns__idIns__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="InstitutoTichModel.FK__Transacci__idDes__151B244E" ManuallyRouted="false" />
+        <AssociationConnector Association="InstitutoTichModel.FK__Transacci__idOri__14270015" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

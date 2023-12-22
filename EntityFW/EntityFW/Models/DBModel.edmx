@@ -1,0 +1,1653 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="InstitutoTichModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Alumnos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="primerApellido" Type="varchar" MaxLength="50" />
+          <Property Name="segundoApellido" Type="varchar" MaxLength="50" />
+          <Property Name="correo" Type="varchar" MaxLength="80" />
+          <Property Name="telefono" Type="nchar" MaxLength="10" />
+          <Property Name="fechaNacimiento" Type="date" />
+          <Property Name="curp" Type="char" MaxLength="18" />
+          <Property Name="sueldo" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="idEstadoOrigen" Type="int" />
+          <Property Name="idEstatus" Type="smallint" />
+        </EntityType>
+        <EntityType Name="AlumnosBaja">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="primerApellido" Type="varchar" MaxLength="50" />
+          <Property Name="segundoApellido" Type="varchar" MaxLength="50" />
+          <Property Name="fechaBaja" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CatCurso">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clave" Type="varchar" MaxLength="15" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="descripcion" Type="varchar" MaxLength="1000" />
+          <Property Name="horas" Type="tinyint" />
+          <Property Name="idPrerequisito" Type="smallint" />
+          <Property Name="activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="Cursos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idCatCurso" Type="smallint" />
+          <Property Name="fechainicio" Type="date" />
+          <Property Name="dechatermino" Type="date" />
+          <Property Name="activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="CursosAlumnos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idCurso" Type="smallint" />
+          <Property Name="idAlumno" Type="int" />
+          <Property Name="fechaIncripcion" Type="date" />
+          <Property Name="fechaBaja" Type="date" />
+          <Property Name="calificacion" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="CursosInstructores">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idCurso" Type="smallint" />
+          <Property Name="idInstructor" Type="smallint" />
+          <Property Name="fechaContratacion" Type="date" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'InstitutoTich.dbo.Ejercicios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Ejercicios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="primerApellido" Type="varchar" MaxLength="50" />
+          <Property Name="segundoApellido" Type="varchar" MaxLength="50" />
+          <Property Name="correo" Type="varchar" MaxLength="80" />
+          <Property Name="telefono" Type="nchar" MaxLength="10" />
+          <Property Name="fechaNacimiento" Type="date" />
+          <Property Name="curp" Type="char" MaxLength="18" />
+          <Property Name="sueldo" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="idEstadoOrigen" Type="int" />
+          <Property Name="idEstatus" Type="smallint" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'InstitutoTich.dbo.Ejercicios1' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Ejercicios1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="primerApellido" Type="varchar" MaxLength="50" />
+          <Property Name="segundoApellido" Type="varchar" MaxLength="50" />
+          <Property Name="correo" Type="varchar" MaxLength="80" />
+          <Property Name="telefono" Type="nchar" MaxLength="10" />
+          <Property Name="fechaNacimiento" Type="date" />
+          <Property Name="curp" Type="char" MaxLength="18" />
+          <Property Name="sueldo" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="idEstadoOrigen" Type="int" />
+          <Property Name="idEstatus" Type="smallint" />
+        </EntityType>
+        <EntityType Name="Estados">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="EstatusAlumno">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="smallint" Nullable="false" />
+          <Property Name="Clave" Type="char" MaxLength="10" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Instructores">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="smallint" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="primerApellido" Type="varchar" MaxLength="50" />
+          <Property Name="segundoApellido" Type="varchar" MaxLength="50" />
+          <Property Name="correo" Type="varchar" MaxLength="80" />
+          <Property Name="telefono" Type="nchar" MaxLength="10" />
+          <Property Name="fechaNacimiento" Type="date" />
+          <Property Name="rfc" Type="char" MaxLength="13" />
+          <Property Name="curp" Type="char" MaxLength="18" />
+          <Property Name="cuotaHora" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="Saldos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Saldo" Type="money" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TablaISR">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="LimInf" Type="decimal" Precision="19" Scale="2" />
+          <Property Name="LimSup" Type="decimal" Precision="19" Scale="2" />
+          <Property Name="CuotaFija" Type="decimal" Precision="19" Scale="2" />
+          <Property Name="ExedLimInf" Type="decimal" Precision="19" Scale="2" />
+          <Property Name="Subsidio" Type="decimal" Precision="19" Scale="2" />
+        </EntityType>
+        <EntityType Name="Transacciones">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idOrigen" Type="int" />
+          <Property Name="idDestino" Type="int" />
+          <Property Name="Monto" Type="money" />
+        </EntityType>
+        <Association Name="FK__Alumnos__idEstad__3E52440B">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Alumnos">
+              <PropertyRef Name="idEstadoOrigen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Alumnos__idEstat__3F466844">
+          <End Role="EstatusAlumno" Type="Self.EstatusAlumno" Multiplicity="0..1" />
+          <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstatusAlumno">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Alumnos">
+              <PropertyRef Name="idEstatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cursos__idCatCur__37A5467C">
+          <End Role="CatCurso" Type="Self.CatCurso" Multiplicity="0..1" />
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatCurso">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cursos">
+              <PropertyRef Name="idCatCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CursosAlu__idAlu__571DF1D5">
+          <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="0..1" />
+          <End Role="CursosAlumnos" Type="Self.CursosAlumnos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumnos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CursosAlumnos">
+              <PropertyRef Name="idAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CursosAlu__idCur__5629CD9C">
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="0..1" />
+          <End Role="CursosAlumnos" Type="Self.CursosAlumnos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cursos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CursosAlumnos">
+              <PropertyRef Name="idCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CursosIns__idCur__5070F446">
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="0..1" />
+          <End Role="CursosInstructores" Type="Self.CursosInstructores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cursos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CursosInstructores">
+              <PropertyRef Name="idCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CursosIns__idIns__5165187F">
+          <End Role="Instructores" Type="Self.Instructores" Multiplicity="0..1" />
+          <End Role="CursosInstructores" Type="Self.CursosInstructores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instructores">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CursosInstructores">
+              <PropertyRef Name="idInstructor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacci__idDes__151B244E">
+          <End Role="Saldos" Type="Self.Saldos" Multiplicity="0..1" />
+          <End Role="Transacciones" Type="Self.Transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Saldos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transacciones">
+              <PropertyRef Name="idDestino" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacci__idOri__14270015">
+          <End Role="Saldos" Type="Self.Saldos" Multiplicity="0..1" />
+          <End Role="Transacciones" Type="Self.Transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Saldos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transacciones">
+              <PropertyRef Name="idOrigen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CatCurso_CatCurso">
+          <End Role="CatCurso" Type="Self.CatCurso" Multiplicity="0..1" />
+          <End Role="CatCurso1" Type="Self.CatCurso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatCurso">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CatCurso1">
+              <PropertyRef Name="idPrerequisito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="amortizaciónReembolso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idAlumno" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Quincena" Type="smallint" Nullable="false" />
+                <Property Name="SaldoAnterior" Type="decimal" Precision="10" Scale="2" />
+                <Property Name="Pago" Type="decimal" Precision="10" Scale="2" />
+                <Property Name="SaldoNuevo" Type="decimal" Precision="10" Scale="2" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="amortizaciónReembolsoIns" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idIns" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="mes" Type="smallint" Nullable="false" />
+                <Property Name="SaldoAnterior" Type="decimal" Precision="10" Scale="2" />
+                <Property Name="Interes" Type="decimal" Precision="10" Scale="2" />
+                <Property Name="Pago" Type="decimal" Precision="10" Scale="2" />
+                <Property Name="SaldoNuevo" Type="decimal" Precision="10" Scale="2" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="ASCII_lista" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Cal_Impuesto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
+          <Parameter Name="idInstructor" Type="int" Mode="In" />
+          <Parameter Name="idCurso" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Calculadora" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="decimal">
+          <Parameter Name="num1" Type="float" Mode="In" />
+          <Parameter Name="num2" Type="float" Mode="In" />
+          <Parameter Name="op" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="consultarAlumnos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="consultarEAlumnos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="consultarEstados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="consultarEstatusAlumnos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Convertir_Cedena" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="cadena" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Factorial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="fac" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="GetEdad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="fecha_nacimiento" Type="date" Mode="In" />
+          <Parameter Name="fecha_actual" Type="date" Mode="In" />
+        </Function>
+        <Function Name="GetFechaNacimiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="date">
+          <Parameter Name="curp" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetGenero" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="curp" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetHonorarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
+          <Parameter Name="idinstructor" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetidEstado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="curp" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="listaAlumnosPorCurso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idCurso" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="#" Type="smallint" Nullable="false" />
+                <Property Name="Nombre" Type="varchar" MaxLength="50" />
+                <Property Name="Cal" Type="tinyint" />
+                <Property Name="NombreCurso" Type="varchar" MaxLength="50" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="ReembolsoQuincenal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
+          <Parameter Name="SueldoMensual" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Reembolsos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="mensualidad" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Relacion_Alumnos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="SP_Actualizar_Alumnos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="primerApellido" Type="varchar" Mode="In" />
+          <Parameter Name="segundoApellido" Type="varchar" Mode="In" />
+          <Parameter Name="correo" Type="varchar" Mode="In" />
+          <Parameter Name="telefono" Type="nchar" Mode="In" />
+          <Parameter Name="fechaNacimiento" Type="date" Mode="In" />
+          <Parameter Name="curp" Type="char" Mode="In" />
+          <Parameter Name="sueldo" Type="decimal" Mode="In" />
+          <Parameter Name="idEstadoOrigen" Type="int" Mode="In" />
+          <Parameter Name="idEstatus" Type="smallint" Mode="In" />
+        </Function>
+        <Function Name="SP_Actualizar_Estado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_Actualizar_EstatusAlumno" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="clave" Type="varchar" Mode="In" />
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_actualizarAlumnos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="primerApellido" Type="varchar" Mode="In" />
+          <Parameter Name="segundoApellido" Type="varchar" Mode="In" />
+          <Parameter Name="correo" Type="varchar" Mode="In" />
+          <Parameter Name="telefono" Type="nchar" Mode="In" />
+          <Parameter Name="fechaNacimiento" Type="date" Mode="In" />
+          <Parameter Name="curp" Type="char" Mode="In" />
+          <Parameter Name="sueldo" Type="decimal" Mode="In" />
+          <Parameter Name="idEstadoOrigen" Type="int" Mode="In" />
+          <Parameter Name="idEstatus" Type="smallint" Mode="In" />
+        </Function>
+        <Function Name="SP_actualizarEstatusAlumnos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idAlumno" Type="int" Mode="In" />
+          <Parameter Name="idEstatus" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Agregar_Alumnos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="primerApellido" Type="varchar" Mode="In" />
+          <Parameter Name="segundoApellido" Type="varchar" Mode="In" />
+          <Parameter Name="correo" Type="varchar" Mode="In" />
+          <Parameter Name="telefono" Type="nchar" Mode="In" />
+          <Parameter Name="fechaNacimiento" Type="date" Mode="In" />
+          <Parameter Name="curp" Type="char" Mode="In" />
+          <Parameter Name="sueldo" Type="decimal" Mode="In" />
+          <Parameter Name="idEstadoOrigen" Type="int" Mode="In" />
+          <Parameter Name="idEstatus" Type="smallint" Mode="In" />
+        </Function>
+        <Function Name="SP_Agregar_Estado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_Agregar_EstatusAlumno" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="clave" Type="varchar" Mode="In" />
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_agregarAlumnos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="primerApellido" Type="varchar" Mode="In" />
+          <Parameter Name="segundoApellido" Type="varchar" Mode="In" />
+          <Parameter Name="correo" Type="varchar" Mode="In" />
+          <Parameter Name="telefono" Type="nchar" Mode="In" />
+          <Parameter Name="fechaNacimiento" Type="date" Mode="In" />
+          <Parameter Name="curp" Type="char" Mode="In" />
+          <Parameter Name="sueldo" Type="decimal" Mode="In" />
+          <Parameter Name="idEstadoOrigen" Type="int" Mode="In" />
+          <Parameter Name="idEstatus" Type="smallint" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="SP_ConsultarTodo_Alumnos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_ConsultarTodo_Estado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_ConsultarTodo_EstatusAlumno" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_ConsultarUNO_Alumnos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_ConsultarUNO_Estado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_ConsultarUNO_EstatusAlumno" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Eliminar_Alumnos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Eliminar_Estado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Eliminar_EstatusAlumno" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_eliminarAlumnos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Factorial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="num" Type="int" Mode="InOut" />
+          <Parameter Name="Result" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_Taba_Saldo_Transacciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_Transacciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idOrigen" Type="int" Mode="In" />
+          <Parameter Name="idDestino" Type="int" Mode="In" />
+          <Parameter Name="monto" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Suma" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="num1" Type="int" Mode="In" />
+          <Parameter Name="num2" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="InstitutoTichModelStoreContainer">
+          <EntitySet Name="Alumnos" EntityType="Self.Alumnos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AlumnosBaja" EntityType="Self.AlumnosBaja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatCurso" EntityType="Self.CatCurso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cursos" EntityType="Self.Cursos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CursosAlumnos" EntityType="Self.CursosAlumnos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CursosInstructores" EntityType="Self.CursosInstructores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estados" EntityType="Self.Estados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstatusAlumno" EntityType="Self.EstatusAlumno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Instructores" EntityType="Self.Instructores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Saldos" EntityType="Self.Saldos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TablaISR" EntityType="Self.TablaISR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transacciones" EntityType="Self.Transacciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ejercicios" EntityType="Self.Ejercicios" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Ejercicios].[id] AS [id], 
+    [Ejercicios].[nombre] AS [nombre], 
+    [Ejercicios].[primerApellido] AS [primerApellido], 
+    [Ejercicios].[segundoApellido] AS [segundoApellido], 
+    [Ejercicios].[correo] AS [correo], 
+    [Ejercicios].[telefono] AS [telefono], 
+    [Ejercicios].[fechaNacimiento] AS [fechaNacimiento], 
+    [Ejercicios].[curp] AS [curp], 
+    [Ejercicios].[sueldo] AS [sueldo], 
+    [Ejercicios].[idEstadoOrigen] AS [idEstadoOrigen], 
+    [Ejercicios].[idEstatus] AS [idEstatus]
+    FROM [dbo].[Ejercicios] AS [Ejercicios]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Ejercicios1" EntityType="Self.Ejercicios1" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Ejercicios1].[id] AS [id], 
+    [Ejercicios1].[nombre] AS [nombre], 
+    [Ejercicios1].[primerApellido] AS [primerApellido], 
+    [Ejercicios1].[segundoApellido] AS [segundoApellido], 
+    [Ejercicios1].[correo] AS [correo], 
+    [Ejercicios1].[telefono] AS [telefono], 
+    [Ejercicios1].[fechaNacimiento] AS [fechaNacimiento], 
+    [Ejercicios1].[curp] AS [curp], 
+    [Ejercicios1].[sueldo] AS [sueldo], 
+    [Ejercicios1].[idEstadoOrigen] AS [idEstadoOrigen], 
+    [Ejercicios1].[idEstatus] AS [idEstatus]
+    FROM [dbo].[Ejercicios1] AS [Ejercicios1]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Alumnos__idEstad__3E52440B" Association="Self.FK__Alumnos__idEstad__3E52440B">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Alumnos" EntitySet="Alumnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Alumnos__idEstat__3F466844" Association="Self.FK__Alumnos__idEstat__3F466844">
+            <End Role="EstatusAlumno" EntitySet="EstatusAlumno" />
+            <End Role="Alumnos" EntitySet="Alumnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cursos__idCatCur__37A5467C" Association="Self.FK__Cursos__idCatCur__37A5467C">
+            <End Role="CatCurso" EntitySet="CatCurso" />
+            <End Role="Cursos" EntitySet="Cursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CursosAlu__idAlu__571DF1D5" Association="Self.FK__CursosAlu__idAlu__571DF1D5">
+            <End Role="Alumnos" EntitySet="Alumnos" />
+            <End Role="CursosAlumnos" EntitySet="CursosAlumnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CursosAlu__idCur__5629CD9C" Association="Self.FK__CursosAlu__idCur__5629CD9C">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="CursosAlumnos" EntitySet="CursosAlumnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CursosIns__idCur__5070F446" Association="Self.FK__CursosIns__idCur__5070F446">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="CursosInstructores" EntitySet="CursosInstructores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CursosIns__idIns__5165187F" Association="Self.FK__CursosIns__idIns__5165187F">
+            <End Role="Instructores" EntitySet="Instructores" />
+            <End Role="CursosInstructores" EntitySet="CursosInstructores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacci__idDes__151B244E" Association="Self.FK__Transacci__idDes__151B244E">
+            <End Role="Saldos" EntitySet="Saldos" />
+            <End Role="Transacciones" EntitySet="Transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacci__idOri__14270015" Association="Self.FK__Transacci__idOri__14270015">
+            <End Role="Saldos" EntitySet="Saldos" />
+            <End Role="Transacciones" EntitySet="Transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CatCurso_CatCurso" Association="Self.FK_CatCurso_CatCurso">
+            <End Role="CatCurso" EntitySet="CatCurso" />
+            <End Role="CatCurso1" EntitySet="CatCurso" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InstitutoTichModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="amortizaciónReembolso_Result">
+          <Property Name="Quincena" Type="Int16" Nullable="false" />
+          <Property Name="SaldoAnterior" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Pago" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="SaldoNuevo" Type="Decimal" Precision="10" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="amortizaciónReembolsoIns_Result">
+          <Property Name="mes" Type="Int16" Nullable="false" />
+          <Property Name="SaldoAnterior" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Interes" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Pago" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="SaldoNuevo" Type="Decimal" Precision="10" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="listaAlumnosPorCurso_Result">
+          <Property Name="C_" Type="Int16" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cal" Type="Byte" />
+          <Property Name="NombreCurso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <EntityType Name="Alumnos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="primerApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="segundoApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="correo" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="fechaNacimiento" Type="DateTime" Precision="0" />
+          <Property Name="curp" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="sueldo" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="idEstadoOrigen" Type="Int32" />
+          <Property Name="idEstatus" Type="Int16" />
+          <NavigationProperty Name="Estados" Relationship="Self.FK__Alumnos__idEstad__3E52440B" FromRole="Alumnos" ToRole="Estados" />
+          <NavigationProperty Name="EstatusAlumno" Relationship="Self.FK__Alumnos__idEstat__3F466844" FromRole="Alumnos" ToRole="EstatusAlumno" />
+          <NavigationProperty Name="CursosAlumnos" Relationship="Self.FK__CursosAlu__idAlu__571DF1D5" FromRole="Alumnos" ToRole="CursosAlumnos" />
+        </EntityType>
+        <EntityType Name="AlumnosBaja">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="primerApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="segundoApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fechaBaja" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CatCurso">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clave" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="horas" Type="Byte" />
+          <Property Name="idPrerequisito" Type="Int16" />
+          <Property Name="activo" Type="Boolean" />
+          <NavigationProperty Name="Cursos" Relationship="Self.FK__Cursos__idCatCur__37A5467C" FromRole="CatCurso" ToRole="Cursos" />
+          <NavigationProperty Name="CatCurso1" Relationship="Self.FK_CatCurso_CatCurso" FromRole="CatCurso" ToRole="CatCurso1" />
+          <NavigationProperty Name="CatCurso2" Relationship="Self.FK_CatCurso_CatCurso" FromRole="CatCurso1" ToRole="CatCurso" />
+        </EntityType>
+        <EntityType Name="Cursos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCatCurso" Type="Int16" />
+          <Property Name="fechainicio" Type="DateTime" Precision="0" />
+          <Property Name="dechatermino" Type="DateTime" Precision="0" />
+          <Property Name="activo" Type="Boolean" />
+          <NavigationProperty Name="CatCurso" Relationship="Self.FK__Cursos__idCatCur__37A5467C" FromRole="Cursos" ToRole="CatCurso" />
+          <NavigationProperty Name="CursosAlumnos" Relationship="Self.FK__CursosAlu__idCur__5629CD9C" FromRole="Cursos" ToRole="CursosAlumnos" />
+          <NavigationProperty Name="CursosInstructores" Relationship="Self.FK__CursosIns__idCur__5070F446" FromRole="Cursos" ToRole="CursosInstructores" />
+        </EntityType>
+        <EntityType Name="CursosAlumnos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCurso" Type="Int16" />
+          <Property Name="idAlumno" Type="Int32" />
+          <Property Name="fechaIncripcion" Type="DateTime" Precision="0" />
+          <Property Name="fechaBaja" Type="DateTime" Precision="0" />
+          <Property Name="calificacion" Type="Byte" />
+          <NavigationProperty Name="Alumnos" Relationship="Self.FK__CursosAlu__idAlu__571DF1D5" FromRole="CursosAlumnos" ToRole="Alumnos" />
+          <NavigationProperty Name="Cursos" Relationship="Self.FK__CursosAlu__idCur__5629CD9C" FromRole="CursosAlumnos" ToRole="Cursos" />
+        </EntityType>
+        <EntityType Name="CursosInstructores">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCurso" Type="Int16" />
+          <Property Name="idInstructor" Type="Int16" />
+          <Property Name="fechaContratacion" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Cursos" Relationship="Self.FK__CursosIns__idCur__5070F446" FromRole="CursosInstructores" ToRole="Cursos" />
+          <NavigationProperty Name="Instructores" Relationship="Self.FK__CursosIns__idIns__5165187F" FromRole="CursosInstructores" ToRole="Instructores" />
+        </EntityType>
+        <EntityType Name="Estados">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Alumnos" Relationship="Self.FK__Alumnos__idEstad__3E52440B" FromRole="Estados" ToRole="Alumnos" />
+        </EntityType>
+        <EntityType Name="EstatusAlumno">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int16" Nullable="false" />
+          <Property Name="Clave" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Alumnos" Relationship="Self.FK__Alumnos__idEstat__3F466844" FromRole="EstatusAlumno" ToRole="Alumnos" />
+        </EntityType>
+        <EntityType Name="Instructores">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int16" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="primerApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="segundoApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="correo" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="fechaNacimiento" Type="DateTime" Precision="0" />
+          <Property Name="rfc" Type="String" MaxLength="13" FixedLength="true" Unicode="false" />
+          <Property Name="curp" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="cuotaHora" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="activo" Type="Boolean" />
+          <NavigationProperty Name="CursosInstructores" Relationship="Self.FK__CursosIns__idIns__5165187F" FromRole="Instructores" ToRole="CursosInstructores" />
+        </EntityType>
+        <EntityType Name="Saldos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Saldo" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Transacciones" Relationship="Self.FK__Transacci__idDes__151B244E" FromRole="Saldos" ToRole="Transacciones" />
+          <NavigationProperty Name="Transacciones1" Relationship="Self.FK__Transacci__idOri__14270015" FromRole="Saldos" ToRole="Transacciones" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TablaISR">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="LimInf" Type="Decimal" Precision="19" Scale="2" />
+          <Property Name="LimSup" Type="Decimal" Precision="19" Scale="2" />
+          <Property Name="CuotaFija" Type="Decimal" Precision="19" Scale="2" />
+          <Property Name="ExedLimInf" Type="Decimal" Precision="19" Scale="2" />
+          <Property Name="Subsidio" Type="Decimal" Precision="19" Scale="2" />
+        </EntityType>
+        <EntityType Name="Transacciones">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idOrigen" Type="Int32" />
+          <Property Name="idDestino" Type="Int32" />
+          <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Saldos" Relationship="Self.FK__Transacci__idDes__151B244E" FromRole="Transacciones" ToRole="Saldos" />
+          <NavigationProperty Name="Saldos1" Relationship="Self.FK__Transacci__idOri__14270015" FromRole="Transacciones" ToRole="Saldos" />
+        </EntityType>
+        <EntityType Name="Ejercicios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="primerApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="segundoApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="correo" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="fechaNacimiento" Type="DateTime" Precision="0" />
+          <Property Name="curp" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="sueldo" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="idEstadoOrigen" Type="Int32" />
+          <Property Name="idEstatus" Type="Int16" />
+        </EntityType>
+        <EntityType Name="Ejercicios1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="primerApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="segundoApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="correo" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="fechaNacimiento" Type="DateTime" Precision="0" />
+          <Property Name="curp" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="sueldo" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="idEstadoOrigen" Type="Int32" />
+          <Property Name="idEstatus" Type="Int16" />
+        </EntityType>
+        <Association Name="FK__Alumnos__idEstad__3E52440B">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Alumnos">
+              <PropertyRef Name="idEstadoOrigen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Alumnos__idEstat__3F466844">
+          <End Role="EstatusAlumno" Type="Self.EstatusAlumno" Multiplicity="0..1" />
+          <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstatusAlumno">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Alumnos">
+              <PropertyRef Name="idEstatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CursosAlu__idAlu__571DF1D5">
+          <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="0..1" />
+          <End Role="CursosAlumnos" Type="Self.CursosAlumnos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumnos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CursosAlumnos">
+              <PropertyRef Name="idAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cursos__idCatCur__37A5467C">
+          <End Role="CatCurso" Type="Self.CatCurso" Multiplicity="0..1" />
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatCurso">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cursos">
+              <PropertyRef Name="idCatCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CatCurso_CatCurso">
+          <End Role="CatCurso" Type="Self.CatCurso" Multiplicity="0..1" />
+          <End Role="CatCurso1" Type="Self.CatCurso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatCurso">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CatCurso1">
+              <PropertyRef Name="idPrerequisito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CursosAlu__idCur__5629CD9C">
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="0..1" />
+          <End Role="CursosAlumnos" Type="Self.CursosAlumnos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cursos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CursosAlumnos">
+              <PropertyRef Name="idCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CursosIns__idCur__5070F446">
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="0..1" />
+          <End Role="CursosInstructores" Type="Self.CursosInstructores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cursos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CursosInstructores">
+              <PropertyRef Name="idCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CursosIns__idIns__5165187F">
+          <End Role="Instructores" Type="Self.Instructores" Multiplicity="0..1" />
+          <End Role="CursosInstructores" Type="Self.CursosInstructores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instructores">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CursosInstructores">
+              <PropertyRef Name="idInstructor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacci__idDes__151B244E">
+          <End Role="Saldos" Type="Self.Saldos" Multiplicity="0..1" />
+          <End Role="Transacciones" Type="Self.Transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Saldos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transacciones">
+              <PropertyRef Name="idDestino" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacci__idOri__14270015">
+          <End Role="Saldos" Type="Self.Saldos" Multiplicity="0..1" />
+          <End Role="Transacciones" Type="Self.Transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Saldos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transacciones">
+              <PropertyRef Name="idOrigen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="InstitutoTichEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Alumnos" EntityType="Self.Alumnos" />
+          <EntitySet Name="AlumnosBaja" EntityType="Self.AlumnosBaja" />
+          <EntitySet Name="CatCurso" EntityType="Self.CatCurso" />
+          <EntitySet Name="Cursos" EntityType="Self.Cursos" />
+          <EntitySet Name="CursosAlumnos" EntityType="Self.CursosAlumnos" />
+          <EntitySet Name="CursosInstructores" EntityType="Self.CursosInstructores" />
+          <EntitySet Name="Estados" EntityType="Self.Estados" />
+          <EntitySet Name="EstatusAlumno" EntityType="Self.EstatusAlumno" />
+          <EntitySet Name="Instructores" EntityType="Self.Instructores" />
+          <EntitySet Name="Saldos" EntityType="Self.Saldos" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TablaISR" EntityType="Self.TablaISR" />
+          <EntitySet Name="Transacciones" EntityType="Self.Transacciones" />
+          <EntitySet Name="Ejercicios" EntityType="Self.Ejercicios" />
+          <EntitySet Name="Ejercicios1" EntityType="Self.Ejercicios1" />
+          <AssociationSet Name="FK__Alumnos__idEstad__3E52440B" Association="Self.FK__Alumnos__idEstad__3E52440B">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Alumnos" EntitySet="Alumnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Alumnos__idEstat__3F466844" Association="Self.FK__Alumnos__idEstat__3F466844">
+            <End Role="EstatusAlumno" EntitySet="EstatusAlumno" />
+            <End Role="Alumnos" EntitySet="Alumnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CursosAlu__idAlu__571DF1D5" Association="Self.FK__CursosAlu__idAlu__571DF1D5">
+            <End Role="Alumnos" EntitySet="Alumnos" />
+            <End Role="CursosAlumnos" EntitySet="CursosAlumnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cursos__idCatCur__37A5467C" Association="Self.FK__Cursos__idCatCur__37A5467C">
+            <End Role="CatCurso" EntitySet="CatCurso" />
+            <End Role="Cursos" EntitySet="Cursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CatCurso_CatCurso" Association="Self.FK_CatCurso_CatCurso">
+            <End Role="CatCurso" EntitySet="CatCurso" />
+            <End Role="CatCurso1" EntitySet="CatCurso" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CursosAlu__idCur__5629CD9C" Association="Self.FK__CursosAlu__idCur__5629CD9C">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="CursosAlumnos" EntitySet="CursosAlumnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CursosIns__idCur__5070F446" Association="Self.FK__CursosIns__idCur__5070F446">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="CursosInstructores" EntitySet="CursosInstructores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CursosIns__idIns__5165187F" Association="Self.FK__CursosIns__idIns__5165187F">
+            <End Role="Instructores" EntitySet="Instructores" />
+            <End Role="CursosInstructores" EntitySet="CursosInstructores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacci__idDes__151B244E" Association="Self.FK__Transacci__idDes__151B244E">
+            <End Role="Saldos" EntitySet="Saldos" />
+            <End Role="Transacciones" EntitySet="Transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacci__idOri__14270015" Association="Self.FK__Transacci__idOri__14270015">
+            <End Role="Saldos" EntitySet="Saldos" />
+            <End Role="Transacciones" EntitySet="Transacciones" />
+          </AssociationSet>
+          <FunctionImport Name="amortizaciónReembolso" IsComposable="true" ReturnType="Collection(InstitutoTichModel.amortizaciónReembolso_Result)">
+            <Parameter Name="idAlumno" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="amortizaciónReembolsoIns" IsComposable="true" ReturnType="Collection(InstitutoTichModel.amortizaciónReembolsoIns_Result)">
+            <Parameter Name="idIns" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="listaAlumnosPorCurso" IsComposable="true" ReturnType="Collection(InstitutoTichModel.listaAlumnosPorCurso_Result)">
+            <Parameter Name="idCurso" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ASCII_lista" />
+          <FunctionImport Name="consultarAlumnos" ReturnType="Collection(InstitutoTichModel.consultarAlumnos_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="consultarEAlumnos" ReturnType="Collection(InstitutoTichModel.consultarEAlumnos_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="consultarEstados" ReturnType="Collection(InstitutoTichModel.consultarEstados_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="consultarEstatusAlumnos" ReturnType="Collection(InstitutoTichModel.consultarEstatusAlumnos_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Actualizar_Alumnos">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="primerApellido" Mode="In" Type="String" />
+            <Parameter Name="segundoApellido" Mode="In" Type="String" />
+            <Parameter Name="correo" Mode="In" Type="String" />
+            <Parameter Name="telefono" Mode="In" Type="String" />
+            <Parameter Name="fechaNacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="curp" Mode="In" Type="String" />
+            <Parameter Name="sueldo" Mode="In" Type="Decimal" />
+            <Parameter Name="idEstadoOrigen" Mode="In" Type="Int32" />
+            <Parameter Name="idEstatus" Mode="In" Type="Int16" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Actualizar_Estado">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Actualizar_EstatusAlumno">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="clave" Mode="In" Type="String" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_actualizarAlumnos">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="primerApellido" Mode="In" Type="String" />
+            <Parameter Name="segundoApellido" Mode="In" Type="String" />
+            <Parameter Name="correo" Mode="In" Type="String" />
+            <Parameter Name="telefono" Mode="In" Type="String" />
+            <Parameter Name="fechaNacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="curp" Mode="In" Type="String" />
+            <Parameter Name="sueldo" Mode="In" Type="Decimal" />
+            <Parameter Name="idEstadoOrigen" Mode="In" Type="Int32" />
+            <Parameter Name="idEstatus" Mode="In" Type="Int16" />
+          </FunctionImport>
+          <FunctionImport Name="SP_actualizarEstatusAlumnos">
+            <Parameter Name="idAlumno" Mode="In" Type="Int32" />
+            <Parameter Name="idEstatus" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Agregar_Alumnos">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="primerApellido" Mode="In" Type="String" />
+            <Parameter Name="segundoApellido" Mode="In" Type="String" />
+            <Parameter Name="correo" Mode="In" Type="String" />
+            <Parameter Name="telefono" Mode="In" Type="String" />
+            <Parameter Name="fechaNacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="curp" Mode="In" Type="String" />
+            <Parameter Name="sueldo" Mode="In" Type="Decimal" />
+            <Parameter Name="idEstadoOrigen" Mode="In" Type="Int32" />
+            <Parameter Name="idEstatus" Mode="In" Type="Int16" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Agregar_Estado">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Agregar_EstatusAlumno">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="clave" Mode="In" Type="String" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_agregarAlumnos" ReturnType="Collection(Int32)">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="primerApellido" Mode="In" Type="String" />
+            <Parameter Name="segundoApellido" Mode="In" Type="String" />
+            <Parameter Name="correo" Mode="In" Type="String" />
+            <Parameter Name="telefono" Mode="In" Type="String" />
+            <Parameter Name="fechaNacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="curp" Mode="In" Type="String" />
+            <Parameter Name="sueldo" Mode="In" Type="Decimal" />
+            <Parameter Name="idEstadoOrigen" Mode="In" Type="Int32" />
+            <Parameter Name="idEstatus" Mode="In" Type="Int16" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ConsultarTodo_Alumnos" ReturnType="Collection(InstitutoTichModel.SP_ConsultarTodo_Alumnos_Result)" />
+          <FunctionImport Name="SP_ConsultarTodo_Estado" ReturnType="Collection(InstitutoTichModel.SP_ConsultarTodo_Estado_Result)" />
+          <FunctionImport Name="SP_ConsultarTodo_EstatusAlumno" ReturnType="Collection(InstitutoTichModel.SP_ConsultarTodo_EstatusAlumno_Result)" />
+          <FunctionImport Name="SP_ConsultarUNO_Alumnos" ReturnType="Collection(InstitutoTichModel.SP_ConsultarUNO_Alumnos_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ConsultarUNO_Estado" ReturnType="Collection(InstitutoTichModel.SP_ConsultarUNO_Estado_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ConsultarUNO_EstatusAlumno" ReturnType="Collection(InstitutoTichModel.SP_ConsultarUNO_EstatusAlumno_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Eliminar_Alumnos">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Eliminar_Estado">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Eliminar_EstatusAlumno">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_eliminarAlumnos">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Factorial">
+            <Parameter Name="num" Mode="InOut" Type="Int32" />
+            <Parameter Name="Result" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(InstitutoTichModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(InstitutoTichModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Taba_Saldo_Transacciones" />
+          <FunctionImport Name="SP_Transacciones">
+            <Parameter Name="idOrigen" Mode="In" Type="Int32" />
+            <Parameter Name="idDestino" Mode="In" Type="Int32" />
+            <Parameter Name="monto" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="consultarAlumnos_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="primerApellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="segundoApellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="correo" Nullable="true" MaxLength="80" />
+          <Property Type="DateTime" Name="fechaNacimiento" Nullable="true" />
+          <Property Type="String" Name="telefono" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="curp" Nullable="true" MaxLength="18" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Estatus" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="consultarEAlumnos_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="primerApellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="segundoApellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="correo" Nullable="true" MaxLength="80" />
+          <Property Type="String" Name="telefono" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="curp" Nullable="true" MaxLength="18" />
+          <Property Type="Int32" Name="Estado" Nullable="true" />
+          <Property Type="Int16" Name="Estatus" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="consultarEstados_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="consultarEstatusAlumnos_Result">
+          <Property Type="Int16" Name="id" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="SP_ConsultarTodo_Alumnos_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="primerApellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="segundoApellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="correo" Nullable="true" MaxLength="80" />
+          <Property Type="String" Name="telefono" Nullable="true" MaxLength="10" />
+          <Property Type="DateTime" Name="fechaNacimiento" Nullable="true" />
+          <Property Type="String" Name="curp" Nullable="true" MaxLength="18" />
+          <Property Type="Decimal" Name="sueldo" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Int32" Name="idEstadoOrigen" Nullable="true" />
+          <Property Type="Int16" Name="idEstatus" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_ConsultarTodo_Estado_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="SP_ConsultarTodo_EstatusAlumno_Result">
+          <Property Type="Int16" Name="id" Nullable="false" />
+          <Property Type="String" Name="Clave" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="SP_ConsultarUNO_Alumnos_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="primerApellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="segundoApellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="correo" Nullable="true" MaxLength="80" />
+          <Property Type="String" Name="telefono" Nullable="true" MaxLength="10" />
+          <Property Type="DateTime" Name="fechaNacimiento" Nullable="true" />
+          <Property Type="String" Name="curp" Nullable="true" MaxLength="18" />
+          <Property Type="Decimal" Name="sueldo" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Int32" Name="idEstadoOrigen" Nullable="true" />
+          <Property Type="Int16" Name="idEstatus" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_ConsultarUNO_Estado_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="SP_ConsultarUNO_EstatusAlumno_Result">
+          <Property Type="Int16" Name="id" Nullable="false" />
+          <Property Type="String" Name="Clave" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="InstitutoTichModelStoreContainer" CdmEntityContainer="InstitutoTichEntities">
+          <EntitySetMapping Name="Alumnos">
+            <EntityTypeMapping TypeName="InstitutoTichModel.Alumnos">
+              <MappingFragment StoreEntitySet="Alumnos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+                <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+                <ScalarProperty Name="curp" ColumnName="curp" />
+                <ScalarProperty Name="sueldo" ColumnName="sueldo" />
+                <ScalarProperty Name="idEstadoOrigen" ColumnName="idEstadoOrigen" />
+                <ScalarProperty Name="idEstatus" ColumnName="idEstatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AlumnosBaja">
+            <EntityTypeMapping TypeName="InstitutoTichModel.AlumnosBaja">
+              <MappingFragment StoreEntitySet="AlumnosBaja">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+                <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+                <ScalarProperty Name="fechaBaja" ColumnName="fechaBaja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatCurso">
+            <EntityTypeMapping TypeName="InstitutoTichModel.CatCurso">
+              <MappingFragment StoreEntitySet="CatCurso">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="horas" ColumnName="horas" />
+                <ScalarProperty Name="idPrerequisito" ColumnName="idPrerequisito" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cursos">
+            <EntityTypeMapping TypeName="InstitutoTichModel.Cursos">
+              <MappingFragment StoreEntitySet="Cursos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idCatCurso" ColumnName="idCatCurso" />
+                <ScalarProperty Name="fechainicio" ColumnName="fechainicio" />
+                <ScalarProperty Name="dechatermino" ColumnName="dechatermino" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CursosAlumnos">
+            <EntityTypeMapping TypeName="InstitutoTichModel.CursosAlumnos">
+              <MappingFragment StoreEntitySet="CursosAlumnos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idCurso" ColumnName="idCurso" />
+                <ScalarProperty Name="idAlumno" ColumnName="idAlumno" />
+                <ScalarProperty Name="fechaIncripcion" ColumnName="fechaIncripcion" />
+                <ScalarProperty Name="fechaBaja" ColumnName="fechaBaja" />
+                <ScalarProperty Name="calificacion" ColumnName="calificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CursosInstructores">
+            <EntityTypeMapping TypeName="InstitutoTichModel.CursosInstructores">
+              <MappingFragment StoreEntitySet="CursosInstructores">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idCurso" ColumnName="idCurso" />
+                <ScalarProperty Name="idInstructor" ColumnName="idInstructor" />
+                <ScalarProperty Name="fechaContratacion" ColumnName="fechaContratacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estados">
+            <EntityTypeMapping TypeName="InstitutoTichModel.Estados">
+              <MappingFragment StoreEntitySet="Estados">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstatusAlumno">
+            <EntityTypeMapping TypeName="InstitutoTichModel.EstatusAlumno">
+              <MappingFragment StoreEntitySet="EstatusAlumno">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Instructores">
+            <EntityTypeMapping TypeName="InstitutoTichModel.Instructores">
+              <MappingFragment StoreEntitySet="Instructores">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+                <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+                <ScalarProperty Name="rfc" ColumnName="rfc" />
+                <ScalarProperty Name="curp" ColumnName="curp" />
+                <ScalarProperty Name="cuotaHora" ColumnName="cuotaHora" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Saldos">
+            <EntityTypeMapping TypeName="InstitutoTichModel.Saldos">
+              <MappingFragment StoreEntitySet="Saldos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="InstitutoTichModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TablaISR">
+            <EntityTypeMapping TypeName="InstitutoTichModel.TablaISR">
+              <MappingFragment StoreEntitySet="TablaISR">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="LimInf" ColumnName="LimInf" />
+                <ScalarProperty Name="LimSup" ColumnName="LimSup" />
+                <ScalarProperty Name="CuotaFija" ColumnName="CuotaFija" />
+                <ScalarProperty Name="ExedLimInf" ColumnName="ExedLimInf" />
+                <ScalarProperty Name="Subsidio" ColumnName="Subsidio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transacciones">
+            <EntityTypeMapping TypeName="InstitutoTichModel.Transacciones">
+              <MappingFragment StoreEntitySet="Transacciones">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idOrigen" ColumnName="idOrigen" />
+                <ScalarProperty Name="idDestino" ColumnName="idDestino" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ejercicios">
+            <EntityTypeMapping TypeName="InstitutoTichModel.Ejercicios">
+              <MappingFragment StoreEntitySet="Ejercicios">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+                <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+                <ScalarProperty Name="curp" ColumnName="curp" />
+                <ScalarProperty Name="sueldo" ColumnName="sueldo" />
+                <ScalarProperty Name="idEstadoOrigen" ColumnName="idEstadoOrigen" />
+                <ScalarProperty Name="idEstatus" ColumnName="idEstatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ejercicios1">
+            <EntityTypeMapping TypeName="InstitutoTichModel.Ejercicios1">
+              <MappingFragment StoreEntitySet="Ejercicios1">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+                <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+                <ScalarProperty Name="curp" ColumnName="curp" />
+                <ScalarProperty Name="sueldo" ColumnName="sueldo" />
+                <ScalarProperty Name="idEstadoOrigen" ColumnName="idEstadoOrigen" />
+                <ScalarProperty Name="idEstatus" ColumnName="idEstatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionName="InstitutoTichModel.Store.amortizaciónReembolso" FunctionImportName="amortizaciónReembolso">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InstitutoTichModel.amortizaciónReembolso_Result">
+                <ScalarProperty Name="Quincena" ColumnName="Quincena" />
+                <ScalarProperty Name="SaldoAnterior" ColumnName="SaldoAnterior" />
+                <ScalarProperty Name="Pago" ColumnName="Pago" />
+                <ScalarProperty Name="SaldoNuevo" ColumnName="SaldoNuevo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="InstitutoTichModel.Store.amortizaciónReembolsoIns" FunctionImportName="amortizaciónReembolsoIns">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InstitutoTichModel.amortizaciónReembolsoIns_Result">
+                <ScalarProperty Name="mes" ColumnName="mes" />
+                <ScalarProperty Name="SaldoAnterior" ColumnName="SaldoAnterior" />
+                <ScalarProperty Name="Interes" ColumnName="Interes" />
+                <ScalarProperty Name="Pago" ColumnName="Pago" />
+                <ScalarProperty Name="SaldoNuevo" ColumnName="SaldoNuevo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="InstitutoTichModel.Store.listaAlumnosPorCurso" FunctionImportName="listaAlumnosPorCurso">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InstitutoTichModel.listaAlumnosPorCurso_Result">
+                <ScalarProperty Name="C_" ColumnName="#" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cal" ColumnName="Cal" />
+                <ScalarProperty Name="NombreCurso" ColumnName="NombreCurso" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ASCII_lista" FunctionName="InstitutoTichModel.Store.ASCII_lista" />
+          <FunctionImportMapping FunctionImportName="consultarAlumnos" FunctionName="InstitutoTichModel.Store.consultarAlumnos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InstitutoTichModel.consultarAlumnos_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+                <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="curp" ColumnName="curp" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="consultarEAlumnos" FunctionName="InstitutoTichModel.Store.consultarEAlumnos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InstitutoTichModel.consultarEAlumnos_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+                <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="curp" ColumnName="curp" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="consultarEstados" FunctionName="InstitutoTichModel.Store.consultarEstados">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InstitutoTichModel.consultarEstados_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="consultarEstatusAlumnos" FunctionName="InstitutoTichModel.Store.consultarEstatusAlumnos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InstitutoTichModel.consultarEstatusAlumnos_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_Actualizar_Alumnos" FunctionName="InstitutoTichModel.Store.SP_Actualizar_Alumnos" />
+          <FunctionImportMapping FunctionImportName="SP_Actualizar_Estado" FunctionName="InstitutoTichModel.Store.SP_Actualizar_Estado" />
+          <FunctionImportMapping FunctionImportName="SP_Actualizar_EstatusAlumno" FunctionName="InstitutoTichModel.Store.SP_Actualizar_EstatusAlumno" />
+          <FunctionImportMapping FunctionImportName="SP_actualizarAlumnos" FunctionName="InstitutoTichModel.Store.SP_actualizarAlumnos" />
+          <FunctionImportMapping FunctionImportName="SP_actualizarEstatusAlumnos" FunctionName="InstitutoTichModel.Store.SP_actualizarEstatusAlumnos" />
+          <FunctionImportMapping FunctionImportName="SP_Agregar_Alumnos" FunctionName="InstitutoTichModel.Store.SP_Agregar_Alumnos" />
+          <FunctionImportMapping FunctionImportName="SP_Agregar_Estado" FunctionName="InstitutoTichModel.Store.SP_Agregar_Estado" />
+          <FunctionImportMapping FunctionImportName="SP_Agregar_EstatusAlumno" FunctionName="InstitutoTichModel.Store.SP_Agregar_EstatusAlumno" />
+          <FunctionImportMapping FunctionImportName="SP_agregarAlumnos" FunctionName="InstitutoTichModel.Store.SP_agregarAlumnos" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="InstitutoTichModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="SP_ConsultarTodo_Alumnos" FunctionName="InstitutoTichModel.Store.SP_ConsultarTodo_Alumnos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InstitutoTichModel.SP_ConsultarTodo_Alumnos_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+                <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+                <ScalarProperty Name="curp" ColumnName="curp" />
+                <ScalarProperty Name="sueldo" ColumnName="sueldo" />
+                <ScalarProperty Name="idEstadoOrigen" ColumnName="idEstadoOrigen" />
+                <ScalarProperty Name="idEstatus" ColumnName="idEstatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_ConsultarTodo_Estado" FunctionName="InstitutoTichModel.Store.SP_ConsultarTodo_Estado">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InstitutoTichModel.SP_ConsultarTodo_Estado_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_ConsultarTodo_EstatusAlumno" FunctionName="InstitutoTichModel.Store.SP_ConsultarTodo_EstatusAlumno">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InstitutoTichModel.SP_ConsultarTodo_EstatusAlumno_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_ConsultarUNO_Alumnos" FunctionName="InstitutoTichModel.Store.SP_ConsultarUNO_Alumnos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InstitutoTichModel.SP_ConsultarUNO_Alumnos_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+                <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+                <ScalarProperty Name="curp" ColumnName="curp" />
+                <ScalarProperty Name="sueldo" ColumnName="sueldo" />
+                <ScalarProperty Name="idEstadoOrigen" ColumnName="idEstadoOrigen" />
+                <ScalarProperty Name="idEstatus" ColumnName="idEstatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_ConsultarUNO_Estado" FunctionName="InstitutoTichModel.Store.SP_ConsultarUNO_Estado">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InstitutoTichModel.SP_ConsultarUNO_Estado_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_ConsultarUNO_EstatusAlumno" FunctionName="InstitutoTichModel.Store.SP_ConsultarUNO_EstatusAlumno">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InstitutoTichModel.SP_ConsultarUNO_EstatusAlumno_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="InstitutoTichModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="InstitutoTichModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="SP_Eliminar_Alumnos" FunctionName="InstitutoTichModel.Store.SP_Eliminar_Alumnos" />
+          <FunctionImportMapping FunctionImportName="SP_Eliminar_Estado" FunctionName="InstitutoTichModel.Store.SP_Eliminar_Estado" />
+          <FunctionImportMapping FunctionImportName="SP_Eliminar_EstatusAlumno" FunctionName="InstitutoTichModel.Store.SP_Eliminar_EstatusAlumno" />
+          <FunctionImportMapping FunctionImportName="SP_eliminarAlumnos" FunctionName="InstitutoTichModel.Store.SP_eliminarAlumnos" />
+          <FunctionImportMapping FunctionImportName="SP_Factorial" FunctionName="InstitutoTichModel.Store.SP_Factorial" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="InstitutoTichModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InstitutoTichModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="InstitutoTichModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InstitutoTichModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="InstitutoTichModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="SP_Taba_Saldo_Transacciones" FunctionName="InstitutoTichModel.Store.SP_Taba_Saldo_Transacciones" />
+          <FunctionImportMapping FunctionImportName="SP_Transacciones" FunctionName="InstitutoTichModel.Store.SP_Transacciones" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="InstitutoTichModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

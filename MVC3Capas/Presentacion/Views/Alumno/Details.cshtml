@@ -1,0 +1,165 @@
+﻿@model Entidades.Alumnos
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles de un Alumno</h2>
+<span id="id" style="display: none;">@Html.DisplayFor(model => model.id)</span>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2 text-end">
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+    </dl>
+
+    <dl class="row">
+        <dt class="col-sm-2 text-end">
+            @Html.DisplayNameFor(model => model.primerApellido)
+        </dt>
+
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.primerApellido)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-2 text-end">
+            @Html.DisplayNameFor(model => model.segundoApellido)
+        </dt>
+
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.segundoApellido)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-2 text-end">
+            @Html.DisplayNameFor(model => model.correo)
+        </dt>
+
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.correo)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-2 text-end">
+            @Html.DisplayNameFor(model => model.telefono)
+        </dt>
+
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.telefono)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-2 text-end">
+            @Html.DisplayNameFor(model => model.fechaNacimiento)
+        </dt>
+
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.fechaNacimiento)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-2 text-end">
+            @Html.DisplayNameFor(model => model.curp)
+        </dt>
+
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.curp)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-2 text-end">
+            @Html.DisplayNameFor(model => model.sueldo)
+        </dt>
+
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.sueldo)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-2 text-end">
+            @Html.DisplayNameFor(model => model.idEstadoOrigen)
+        </dt>
+
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.Estados.nombre)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-2 text-end">
+            @Html.DisplayNameFor(model => model.idEstatus)
+        </dt>
+
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.EstatusAlumno.Nombre)
+        </dd>
+    </dl>
+
+    <dl class="row">
+        <dt class="col-sm-2 text-end">
+            <button type="button" class="btn btn-primary" onclick="IMSS()" data-bs-toggle="modal" data-bs-target="#ventanaModal">
+                IMSS
+            </button>
+            @*@Html.ActionLink("ISR", "_TablaISR", new { id = Model.id }, htmlAttributes: new { @class = "btn btn-primary" })*@
+            <!-- The Modal -->
+
+        </dt>
+
+        <dd class="col-sm-3">
+            <button type="button" class="btn btn-primary" onclick="ISR()" data-bs-toggle="modal" data-bs-target="#ventanaModal">
+                ISR
+            </button>
+            @*@Html.ActionLink("IMSS", "_AportacionesIMSS", new { id = Model.id }, htmlAttributes: new { @class = "btn btn-primary" })*@
+        </dd>
+    </dl>
+
+    <div id ="ventanaModal" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id ="modal-title" class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div id="cuerpoModal" class="modal-body">
+                    <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>
+
+
+<script type="text/javascript">
+    function IMSS() {
+        var id = $("#id").text();
+        $("#modal-title").text("Aportaciones IMSS");
+        var url = "@Url.Action("_AportacionesIMSS","Alumno")" + "/" + id;
+        ajaxGet(url, mostrarmodal);
+    }
+
+    function ISR() {
+        var id = $("#id").text();
+        $("#modal-title").text("Calculo ISR");
+        var url = "@Url.Action("_TablaISR", "Alumno")" + "/" + id;
+        ajaxGet(url,mostrarmodal);
+    }
+
+    function mostrarmodal(response) {
+        $("#cuerpoModal").html(response);
+        $("#ventanaModal").modal("show");
+    }
+</script>

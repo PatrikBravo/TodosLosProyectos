@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Entidades.EstatusAlumno>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de Estatus</h2>
+<hr />
+<p>
+    @Html.ActionLink("Agregar", "Create", null, htmlAttributes: new { @class = "btn btn-primary" })
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Clave)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr data-id="@Html.DisplayFor(modelItem => item.id)">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Clave)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.id }, htmlAttributes: new { @class = "btn btn-success" }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.id }, htmlAttributes: new { @class = "btn btn-warning" }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.id }, htmlAttributes: new { @class = "btn btn-danger" }) |
+                    <button type="button" class="btn btn-dark" onclick="EliminarAjax(this)" data-bs-toggle="modal" data-bs-target="#ventanaModal">
+                        Eliminar AJAX
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div id="ventanaModal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="modal-title" class="modal-title">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div id="cuerpoModal" class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-danger" onclick="Eliminar()">Eliminar Ahora Si</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function EliminarAjax(context) {
+        var fila = $(context).closest('tr');
+        var id = fila.data('id');
+        $("#modal-title").text("TI-Capital Humano");
+        var url = "@Url.Action("_AjaxDelete", "EstatusAlumno")" + "/" + id;
+        ajaxGet(url, mostrarmodal);
+    }
+
+    function Eliminar() {
+        let id = $("#idModal").text()
+        ajaxDelete(id.trim());
+        location.reload();
+    }
+
+    function mostrarmodal(response) {
+        $("#cuerpoModal").html(response);
+        $("#ventanaModal").modal("show");
+    }
+</script>

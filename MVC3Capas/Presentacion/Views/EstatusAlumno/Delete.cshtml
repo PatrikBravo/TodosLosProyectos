@@ -1,0 +1,40 @@
+﻿@model Entidades.EstatusAlumno
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eliminar Estatus</h2>
+
+<h3>¿Estas seguro que desea eliminar el Estatus?</h3>
+<br /><hr />
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Clave)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clave)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Eliminar" class="btn btn-danger" onclick="return confirm('¿Estás seguro?')" /> |
+    @Html.ActionLink("Regresar", "Index")
+</div>
+    }
+</div>

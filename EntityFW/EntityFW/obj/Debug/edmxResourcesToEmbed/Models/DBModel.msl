@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="InstitutoTichModelStoreContainer" CdmEntityContainer="InstitutoTichEntities">
+    <EntitySetMapping Name="Alumnos">
+      <EntityTypeMapping TypeName="InstitutoTichModel.Alumnos">
+        <MappingFragment StoreEntitySet="Alumnos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+          <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+          <ScalarProperty Name="curp" ColumnName="curp" />
+          <ScalarProperty Name="sueldo" ColumnName="sueldo" />
+          <ScalarProperty Name="idEstadoOrigen" ColumnName="idEstadoOrigen" />
+          <ScalarProperty Name="idEstatus" ColumnName="idEstatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AlumnosBaja">
+      <EntityTypeMapping TypeName="InstitutoTichModel.AlumnosBaja">
+        <MappingFragment StoreEntitySet="AlumnosBaja">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+          <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+          <ScalarProperty Name="fechaBaja" ColumnName="fechaBaja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatCurso">
+      <EntityTypeMapping TypeName="InstitutoTichModel.CatCurso">
+        <MappingFragment StoreEntitySet="CatCurso">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="clave" ColumnName="clave" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="horas" ColumnName="horas" />
+          <ScalarProperty Name="idPrerequisito" ColumnName="idPrerequisito" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cursos">
+      <EntityTypeMapping TypeName="InstitutoTichModel.Cursos">
+        <MappingFragment StoreEntitySet="Cursos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idCatCurso" ColumnName="idCatCurso" />
+          <ScalarProperty Name="fechainicio" ColumnName="fechainicio" />
+          <ScalarProperty Name="dechatermino" ColumnName="dechatermino" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CursosAlumnos">
+      <EntityTypeMapping TypeName="InstitutoTichModel.CursosAlumnos">
+        <MappingFragment StoreEntitySet="CursosAlumnos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idCurso" ColumnName="idCurso" />
+          <ScalarProperty Name="idAlumno" ColumnName="idAlumno" />
+          <ScalarProperty Name="fechaIncripcion" ColumnName="fechaIncripcion" />
+          <ScalarProperty Name="fechaBaja" ColumnName="fechaBaja" />
+          <ScalarProperty Name="calificacion" ColumnName="calificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CursosInstructores">
+      <EntityTypeMapping TypeName="InstitutoTichModel.CursosInstructores">
+        <MappingFragment StoreEntitySet="CursosInstructores">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idCurso" ColumnName="idCurso" />
+          <ScalarProperty Name="idInstructor" ColumnName="idInstructor" />
+          <ScalarProperty Name="fechaContratacion" ColumnName="fechaContratacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estados">
+      <EntityTypeMapping TypeName="InstitutoTichModel.Estados">
+        <MappingFragment StoreEntitySet="Estados">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstatusAlumno">
+      <EntityTypeMapping TypeName="InstitutoTichModel.EstatusAlumno">
+        <MappingFragment StoreEntitySet="EstatusAlumno">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Instructores">
+      <EntityTypeMapping TypeName="InstitutoTichModel.Instructores">
+        <MappingFragment StoreEntitySet="Instructores">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+          <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+          <ScalarProperty Name="rfc" ColumnName="rfc" />
+          <ScalarProperty Name="curp" ColumnName="curp" />
+          <ScalarProperty Name="cuotaHora" ColumnName="cuotaHora" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Saldos">
+      <EntityTypeMapping TypeName="InstitutoTichModel.Saldos">
+        <MappingFragment StoreEntitySet="Saldos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="InstitutoTichModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TablaISR">
+      <EntityTypeMapping TypeName="InstitutoTichModel.TablaISR">
+        <MappingFragment StoreEntitySet="TablaISR">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="LimInf" ColumnName="LimInf" />
+          <ScalarProperty Name="LimSup" ColumnName="LimSup" />
+          <ScalarProperty Name="CuotaFija" ColumnName="CuotaFija" />
+          <ScalarProperty Name="ExedLimInf" ColumnName="ExedLimInf" />
+          <ScalarProperty Name="Subsidio" ColumnName="Subsidio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transacciones">
+      <EntityTypeMapping TypeName="InstitutoTichModel.Transacciones">
+        <MappingFragment StoreEntitySet="Transacciones">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idOrigen" ColumnName="idOrigen" />
+          <ScalarProperty Name="idDestino" ColumnName="idDestino" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ejercicios">
+      <EntityTypeMapping TypeName="InstitutoTichModel.Ejercicios">
+        <MappingFragment StoreEntitySet="Ejercicios">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+          <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+          <ScalarProperty Name="curp" ColumnName="curp" />
+          <ScalarProperty Name="sueldo" ColumnName="sueldo" />
+          <ScalarProperty Name="idEstadoOrigen" ColumnName="idEstadoOrigen" />
+          <ScalarProperty Name="idEstatus" ColumnName="idEstatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ejercicios1">
+      <EntityTypeMapping TypeName="InstitutoTichModel.Ejercicios1">
+        <MappingFragment StoreEntitySet="Ejercicios1">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+          <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+          <ScalarProperty Name="curp" ColumnName="curp" />
+          <ScalarProperty Name="sueldo" ColumnName="sueldo" />
+          <ScalarProperty Name="idEstadoOrigen" ColumnName="idEstadoOrigen" />
+          <ScalarProperty Name="idEstatus" ColumnName="idEstatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionName="InstitutoTichModel.Store.amortizaciónReembolso" FunctionImportName="amortizaciónReembolso">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InstitutoTichModel.amortizaciónReembolso_Result">
+          <ScalarProperty Name="Quincena" ColumnName="Quincena" />
+          <ScalarProperty Name="SaldoAnterior" ColumnName="SaldoAnterior" />
+          <ScalarProperty Name="Pago" ColumnName="Pago" />
+          <ScalarProperty Name="SaldoNuevo" ColumnName="SaldoNuevo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="InstitutoTichModel.Store.amortizaciónReembolsoIns" FunctionImportName="amortizaciónReembolsoIns">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InstitutoTichModel.amortizaciónReembolsoIns_Result">
+          <ScalarProperty Name="mes" ColumnName="mes" />
+          <ScalarProperty Name="SaldoAnterior" ColumnName="SaldoAnterior" />
+          <ScalarProperty Name="Interes" ColumnName="Interes" />
+          <ScalarProperty Name="Pago" ColumnName="Pago" />
+          <ScalarProperty Name="SaldoNuevo" ColumnName="SaldoNuevo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="InstitutoTichModel.Store.listaAlumnosPorCurso" FunctionImportName="listaAlumnosPorCurso">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InstitutoTichModel.listaAlumnosPorCurso_Result">
+          <ScalarProperty Name="C_" ColumnName="#" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Cal" ColumnName="Cal" />
+          <ScalarProperty Name="NombreCurso" ColumnName="NombreCurso" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ASCII_lista" FunctionName="InstitutoTichModel.Store.ASCII_lista" />
+    <FunctionImportMapping FunctionImportName="consultarAlumnos" FunctionName="InstitutoTichModel.Store.consultarAlumnos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InstitutoTichModel.consultarAlumnos_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+          <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="curp" ColumnName="curp" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="consultarEAlumnos" FunctionName="InstitutoTichModel.Store.consultarEAlumnos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InstitutoTichModel.consultarEAlumnos_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+          <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="curp" ColumnName="curp" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="consultarEstados" FunctionName="InstitutoTichModel.Store.consultarEstados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InstitutoTichModel.consultarEstados_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="consultarEstatusAlumnos" FunctionName="InstitutoTichModel.Store.consultarEstatusAlumnos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InstitutoTichModel.consultarEstatusAlumnos_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Actualizar_Alumnos" FunctionName="InstitutoTichModel.Store.SP_Actualizar_Alumnos" />
+    <FunctionImportMapping FunctionImportName="SP_Actualizar_Estado" FunctionName="InstitutoTichModel.Store.SP_Actualizar_Estado" />
+    <FunctionImportMapping FunctionImportName="SP_Actualizar_EstatusAlumno" FunctionName="InstitutoTichModel.Store.SP_Actualizar_EstatusAlumno" />
+    <FunctionImportMapping FunctionImportName="SP_actualizarAlumnos" FunctionName="InstitutoTichModel.Store.SP_actualizarAlumnos" />
+    <FunctionImportMapping FunctionImportName="SP_actualizarEstatusAlumnos" FunctionName="InstitutoTichModel.Store.SP_actualizarEstatusAlumnos" />
+    <FunctionImportMapping FunctionImportName="SP_Agregar_Alumnos" FunctionName="InstitutoTichModel.Store.SP_Agregar_Alumnos" />
+    <FunctionImportMapping FunctionImportName="SP_Agregar_Estado" FunctionName="InstitutoTichModel.Store.SP_Agregar_Estado" />
+    <FunctionImportMapping FunctionImportName="SP_Agregar_EstatusAlumno" FunctionName="InstitutoTichModel.Store.SP_Agregar_EstatusAlumno" />
+    <FunctionImportMapping FunctionImportName="SP_agregarAlumnos" FunctionName="InstitutoTichModel.Store.SP_agregarAlumnos" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="InstitutoTichModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="SP_ConsultarTodo_Alumnos" FunctionName="InstitutoTichModel.Store.SP_ConsultarTodo_Alumnos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InstitutoTichModel.SP_ConsultarTodo_Alumnos_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+          <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+          <ScalarProperty Name="curp" ColumnName="curp" />
+          <ScalarProperty Name="sueldo" ColumnName="sueldo" />
+          <ScalarProperty Name="idEstadoOrigen" ColumnName="idEstadoOrigen" />
+          <ScalarProperty Name="idEstatus" ColumnName="idEstatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_ConsultarTodo_Estado" FunctionName="InstitutoTichModel.Store.SP_ConsultarTodo_Estado">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InstitutoTichModel.SP_ConsultarTodo_Estado_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_ConsultarTodo_EstatusAlumno" FunctionName="InstitutoTichModel.Store.SP_ConsultarTodo_EstatusAlumno">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InstitutoTichModel.SP_ConsultarTodo_EstatusAlumno_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_ConsultarUNO_Alumnos" FunctionName="InstitutoTichModel.Store.SP_ConsultarUNO_Alumnos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InstitutoTichModel.SP_ConsultarUNO_Alumnos_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+          <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+          <ScalarProperty Name="curp" ColumnName="curp" />
+          <ScalarProperty Name="sueldo" ColumnName="sueldo" />
+          <ScalarProperty Name="idEstadoOrigen" ColumnName="idEstadoOrigen" />
+          <ScalarProperty Name="idEstatus" ColumnName="idEstatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_ConsultarUNO_Estado" FunctionName="InstitutoTichModel.Store.SP_ConsultarUNO_Estado">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InstitutoTichModel.SP_ConsultarUNO_Estado_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_ConsultarUNO_EstatusAlumno" FunctionName="InstitutoTichModel.Store.SP_ConsultarUNO_EstatusAlumno">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InstitutoTichModel.SP_ConsultarUNO_EstatusAlumno_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="InstitutoTichModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="InstitutoTichModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="SP_Eliminar_Alumnos" FunctionName="InstitutoTichModel.Store.SP_Eliminar_Alumnos" />
+    <FunctionImportMapping FunctionImportName="SP_Eliminar_Estado" FunctionName="InstitutoTichModel.Store.SP_Eliminar_Estado" />
+    <FunctionImportMapping FunctionImportName="SP_Eliminar_EstatusAlumno" FunctionName="InstitutoTichModel.Store.SP_Eliminar_EstatusAlumno" />
+    <FunctionImportMapping FunctionImportName="SP_eliminarAlumnos" FunctionName="InstitutoTichModel.Store.SP_eliminarAlumnos" />
+    <FunctionImportMapping FunctionImportName="SP_Factorial" FunctionName="InstitutoTichModel.Store.SP_Factorial" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="InstitutoTichModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InstitutoTichModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="InstitutoTichModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InstitutoTichModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="InstitutoTichModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="SP_Taba_Saldo_Transacciones" FunctionName="InstitutoTichModel.Store.SP_Taba_Saldo_Transacciones" />
+    <FunctionImportMapping FunctionImportName="SP_Transacciones" FunctionName="InstitutoTichModel.Store.SP_Transacciones" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="InstitutoTichModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>
